@@ -1,5 +1,7 @@
 const redux = require("redux");
 const createStore = redux.createStore;
+const reduxLogger = require("redux-logger");
+const logger = reduxLogger.createLogger();
 
 // ! Write the value same as its variable name it is a convention in old redux
 const CAKE_ORDERED = "CAKE_ORDERED";
@@ -135,7 +137,7 @@ const rootReducer = redux.combineReducers({
   IceCream: IceCreamReducer,
 });
 
-const store = createStore(rootReducer);
+const store = createStore(rootReducer, redux.applyMiddleware(logger));
 
 // ? logging the initial state
 console.log("Initial state", store.getState());
