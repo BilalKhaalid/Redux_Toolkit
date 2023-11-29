@@ -28,7 +28,6 @@ function restockCake(quantity = 1) {
 // ? This is the starting or initial state of the application
 const initialState = {
   numOfCakes: 10,
-  anotherProperty: 0,
 };
 
 //! This is a reducer which is responsible how the state changes in the application (previousState,action) => newState
@@ -62,11 +61,20 @@ const unsubscribe = store.subscribe(() =>
   console.log("Updated new state", store.getState())
 );
 
+const actions = redux.bindActionCreators(
+  { orderCake, restockCake },
+  store.dispatch
+);
+
 //* dispatching the actions
-store.dispatch(orderCake());
-store.dispatch(orderCake());
-store.dispatch(orderCake());
-store.dispatch(restockCake(13));
+// store.dispatch(orderCake());
+// store.dispatch(orderCake());
+// store.dispatch(orderCake());
+// store.dispatch(restockCake(13));
+
+// ! actions using bindActionCreators
+actions.orderCake();
+actions.restockCake(6);
 
 // ! unsubscribing from the store
 unsubscribe();
