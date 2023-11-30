@@ -5,17 +5,12 @@ const IceCreamActions =
 
 console.log("Initial State", store.getState());
 
-const unsubscribe = store.subscribe(() =>
-  console.log("Updated State", store.getState())
-);
+const unsubscribe = store.subscribe(() => {});
 
-store.dispatch(CakeActions.ordered());
-store.dispatch(CakeActions.ordered());
-store.dispatch(CakeActions.ordered());
-store.dispatch(CakeActions.restocked(5));
+store.dispatch(CakeActions.ordered(3));
+store.dispatch(CakeActions.restocked(6));
 
-store.dispatch(IceCreamActions.ordered());
-store.dispatch(IceCreamActions.ordered());
+store.dispatch(IceCreamActions.ordered(3));
 store.dispatch(IceCreamActions.restocked(6));
 
 unsubscribe();
