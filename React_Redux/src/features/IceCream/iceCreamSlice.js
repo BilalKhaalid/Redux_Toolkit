@@ -8,7 +8,11 @@ const iceCreamSlice = createSlice({
   },
   reducers: {
     ordered: (state, action) => {
-      state.numOfIceCreams -= action.payload;
+      if (action.payload) {
+        state.numOfIceCreams -= action.payload;
+      } else {
+        state.numOfIceCreams--;
+      }
     },
     restocked: (state, action) => {
       state.numOfIceCreams += action.payload;
