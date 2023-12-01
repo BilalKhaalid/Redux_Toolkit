@@ -7,7 +7,7 @@ export const fetchUsers = createAsyncThunk("user/fetchUsers", async () => {
     const response = await axios.get(
       "https://jsonplaceholder.typicode.com/users"
     );
-    return response.data.map((user) => user.name);
+    return response.data;
   } catch (error) {
     throw error;
   }
